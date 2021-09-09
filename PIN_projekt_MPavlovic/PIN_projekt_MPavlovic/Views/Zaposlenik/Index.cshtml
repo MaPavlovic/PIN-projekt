@@ -1,0 +1,53 @@
+﻿@model IEnumerable<PIN_projekt_MPavlovic.Models.Zapo>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h4>Registracija zaposlenika</h4>
+
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Ime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prezime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Zvanje)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lokacija)
+            </th>
+            <th>
+                <a asp-action="Dodaj" class="btn-outline-success"><i class="far fa-plus-square"></i> Zaposlenik</a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prezime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Zvanje)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lokacija)
+                </td>
+                <td>
+                    <a asp-action="Dodaj" asp-route-id="@item.ZaposlenikID"><i class="fa fa-marker fa-lg"></i></a>
+                    <a asp-action="Delete" asp-route-id="@item.ZaposlenikID" class="text-danger ml-1" onclick="return confirm('Jeste li sigurni da želite izbrisati?')"><i class="fa fa-trash-alt fa-lg"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

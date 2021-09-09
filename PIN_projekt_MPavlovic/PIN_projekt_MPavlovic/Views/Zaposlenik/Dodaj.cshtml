@@ -1,0 +1,53 @@
+﻿@model PIN_projekt_MPavlovic.Models.Zapo
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+
+<h4>Dodavanje zaposlenika</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Dodaj">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ZaposlenikID" />
+            <div class="form-group">
+                <label asp-for="Ime" class="control-label"></label>
+                <input asp-for="Ime" class="form-control" />
+                <span asp-validation-for="Ime" class="text-danger"></span>
+            </div>
+            <div class="form-row">
+            <div class="form-group col-md-6">
+                <label asp-for="Prezime" class="control-label"></label>
+                <input asp-for="Prezime" class="form-control" />
+                <span asp-validation-for="Prezime" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="Zvanje" class="control-label"></label>
+                <input asp-for="Zvanje" class="form-control" />
+                <span asp-validation-for="Zvanje" class="text-danger"></span>
+            </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lokacija" class="control-label"></label>
+                <input asp-for="Lokacija" class="form-control" />
+                <span asp-validation-for="Lokacija" class="text-danger"></span>
+            </div>
+            <div class="form-row">
+            <div class="form-group col-md-6">
+                <input type="submit" value="Podnesi" class="btn btn-primary btn-block" />
+            </div>
+            <div class="form-group col-md-6">
+                <a asp-action="Index" class="btn btn-secondary btn-block"><i class="fa fa-table"></i>Natrag na listu</a>
+            </div>
+             </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

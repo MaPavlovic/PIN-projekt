@@ -1,0 +1,50 @@
+﻿@model IEnumerable<PIN_projekt_MPavlovic.Models.Proizvodi>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Proizvodi</h1>
+
+<p>
+    <a asp-action="Create">Unesi novi proizvod:</a>
+</p>
+<br />
+<br />
+<form type="get">
+    Tražilica:
+    <input type="search" name="search"/>
+    <input type="submit" value="Traži"/>
+</form>
+<br />
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Naziv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cijena)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Naziv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cijena) kn/kg
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.id">Uredi</a> |
+                <a asp-action="Details" asp-route-id="@item.id">Detalji</a> |
+                <a asp-action="Delete" asp-route-id="@item.id">Obriši</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
